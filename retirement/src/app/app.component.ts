@@ -66,10 +66,10 @@ export class AppComponent {
     this.moneyToRetireFormatted = '$' + this.formatMoney(this.moneyToRetire);
     this.yearsToRetirement = 
       this.nper(
-        (this.returnOnInvestment - this.inflation) / 100.0,
-        -1 * this.retirementContributions,
-        -1 * this.currentRetirementSavings,
-        this.moneyToRetire
+        (this.returnOnInvestment - this.inflation) / 100.0 /* rate */,
+        -1 * this.retirementContributions /* paymentAmount */,
+        -1 * this.currentRetirementSavings /* presentValue */,
+        this.moneyToRetire /* futureValue */
       );
     this.yearsToRetirementFormatted = this.yearsToRetirement.toFixed(2);
     if (this.yearsToRetirementFormatted === 'NaN') {
@@ -78,6 +78,13 @@ export class AppComponent {
   }
 
   nper(rate: number, paymentAmount: number, presentValue: number, futureValue: number) {
+    if (rate === 0) {
+      // presentValue and paymentAmount are inverted because reasons.
+      // TODO(Lauren): Add reasons.
+      // We need to uninvert them here.
+      return (futureValue - (presentValue * -1.0) ) / (paymentAmount * -1.0);
+    }
+
     const endOrBeginning: number = 0;
     let numerator: number = paymentAmount * (1 + rate * endOrBeginning) - futureValue * rate;
     let denominator = (presentValue * rate + paymentAmount * (1 + rate * endOrBeginning));
