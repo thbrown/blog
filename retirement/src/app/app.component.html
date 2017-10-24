@@ -6,7 +6,7 @@
 </div>
 
 <div><h1>Inputs</h1></div>
-<mat-form-field class="inputFormField" [floatPlaceholder]="always">
+<mat-form-field class="inputFormField" floatPlaceholder="always">
     <span matPrefix>$</span>
     <input
       placeholder="Retirement Savings (Today)"
@@ -15,7 +15,7 @@
       [(ngModel)]="currentRetirementSavings"
     >
 </mat-form-field>
-<mat-form-field class="inputFormField" [floatPlaceholder]="always">
+<mat-form-field class="inputFormField" floatPlaceholder="always">
   <span matPrefix>$</span>
   <input
     placeholder="Retirement Contributions (Annual)"
@@ -24,7 +24,7 @@
     [(ngModel)]="retirementContributions"
   >
 </mat-form-field>
-<mat-form-field class="inputFormField" [floatPlaceholder]="always">
+<mat-form-field class="inputFormField" floatPlaceholder="always">
     <span matPrefix>$</span>
     <input
       placeholder="Expenses (Annual)"
@@ -35,7 +35,7 @@
 </mat-form-field>
 
 <div><h1>Assumptions</h1></div>
-<mat-form-field class="inputFormField" [floatPlaceholder]="always">
+<mat-form-field class="inputFormField" floatPlaceholder="always">
   <input
     placeholder="Return on Investment (Annual)"
     (input)="onReturnOnInvestmentInputChange($event)"
@@ -54,7 +54,7 @@
   [tickInterval]="returnOnInvestmentTickInterval"
   [value]="returnOnInvestment"
 ></mat-slider>
-<mat-form-field class="inputFormField" [floatPlaceholder]="always">
+<mat-form-field class="inputFormField" floatPlaceholder="always">
   <input
     placeholder="Inflation (Annual)"
     (input)="onInflationInputChange($event)"
