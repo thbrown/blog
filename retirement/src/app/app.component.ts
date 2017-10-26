@@ -123,10 +123,11 @@ export class AppComponent {
   }
 
   calculateOutput(): void {
-    this.moneyToRetire = this.expenses * 25;
+    const netRate = (this.returnOnInvestment - this.inflation) / 100.0;
+    this.moneyToRetire = this.expenses * 1 / netRate;
     this.yearsToRetirement = 
       this.nper(
-        (this.returnOnInvestment - this.inflation) / 100.0 /* rate */,
+        netRate /* rate */,
         -1 * this.contributions /* paymentAmount */,
         -1 * (this.savings - this.cost) /* presentValue, without the $$ you are hypothetically spending */,
         this.moneyToRetire /* futureValue */
@@ -136,14 +137,12 @@ export class AppComponent {
       this.yearsToRetirementFormatted = 'You will never retire!!!';
     }
     this.ageAtRetirement = this.age + this.yearsToRetirement;
-    console.log(this.yearsToRetirement);
-    console.log(this.calculateRetirementAgeWithoutCost());
-    this.retirementDiffDays = (this.yearsToRetirement - this.calculateRetirementAgeWithoutCost()) * 365;
+    this.retirementDiffDays = (this.yearsToRetirement - this.calculateRetirementAgeWithoutCost(netRate)) * 365;
   }
 
-  calculateRetirementAgeWithoutCost(): number {
+  calculateRetirementAgeWithoutCost(netRate: number): number {
     return this.nper(
-      (this.returnOnInvestment - this.inflation) / 100.0 /* rate */,
+      netRate /* rate */,
       -1 * this.contributions /* paymentAmount */,
       -1 * this.savings /* presentValue */,
       this.moneyToRetire /* futureValue */
