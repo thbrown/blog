@@ -3,8 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule,MatFormFieldModule, MatInputModule, MatSliderModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatInputModule, MatSliderModule, MatToolbarModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,13 @@ import { MatButtonModule, MatCheckboxModule,MatFormFieldModule, MatInputModule, 
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
+    MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    MatGridListModule,
     MatInputModule,
-    MatSliderModule
+    MatSliderModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

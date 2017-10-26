@@ -8,42 +8,93 @@ import { MatSliderChange } from '@angular/material/slider'
 })
 export class AppComponent {
 
-  retirementContributions: number = 20000;
-  currentRetirementSavings: number = 50000;
+  savings: number = 50000;
+  savingsMin: number = 0;
+  savingsMax: number = 1000000;
+  savingsStep: number = 1000;
+
+  contributions: number = 20000;
+  contributionsMin: number = 0;
+  contributionsMax: number = 100000;
+  contributionsStep: number = 1000;
+
   expenses: number = 35000;
+  expensesMin: number = 0;
+  expensesMax: number = 100000;
+  expensesStep: number = 1000;
+
+  age: number = 25;
+  ageMin: number = 0;
+  ageMax: number = 125;
+  ageStep: number = 1;
+
+  cost: number = 1000;
+  costMin: number = 0;
+  costMax: number = 100000;
+  costStep: number = 100;
 
   returnOnInvestment: number = 7;
   returnOnInvestmentMin: number = 0;
   returnOnInvestmentMax: number = 15;
   returnOnInvestmentStep: number = 1;
-  returnOnInvestmentTickInterval: number = 1;
+
   inflation: number = 3;
+  inflationMin: number = 0;
+  inflationMax: number = 15;
+  inflationStep: number = 1;
 
   moneyToRetire: number;
-  moneyToRetireFormatted: string;
   yearsToRetirement: number;
   yearsToRetirementFormatted: string;
+  ageAtRetirement: number;
+  retirementDiffDays: number;
 
   constructor() {
     this.calculateOutput();
    }
 
-  onRetirementContributionsInputChange(event): void {
-    // TODO(Lauren): Add slider.
+   onSavingsInputChange(event): void {
+     this.calculateOutput();
+   }
+
+   onSavingsSliderChange(event): void {
+    this.savings = event.value;
+    this.calculateOutput();
+  }
+
+  onContributionsInputChange(event): void {
+    this.calculateOutput();
+  }
+
+  onContributionsSliderChange(event): void {
+    this.contributions = event.value;
     this.calculateOutput();
   }
 
   onExpensesInputChange(event): void {
-    // TODO(Lauren): Add slider.
     this.calculateOutput();
   }
 
-  onCurrentRetirementSavingsInputChange(event): void {
+  onExpensesSliderChange(event): void {
+    this.expenses = event.value;
     this.calculateOutput();
   }
 
-  onReturnOnInvestmentSliderChange(event): void {
-    this.returnOnInvestment = event.value;
+  onAgeInputChange(event): void {
+    this.calculateOutput();
+  }
+
+  onAgeSliderChange(event): void {
+    this.age = event.value;
+    this.calculateOutput();
+  }
+
+  onCostInputChange(event): void {
+    this.calculateOutput();
+  }
+
+  onCostSliderChange(event): void {
+    this.cost = event.value;
     this.calculateOutput();
   }
 
@@ -57,24 +108,46 @@ export class AppComponent {
     this.calculateOutput();
   }
 
+  onReturnOnInvestmentSliderChange(event): void {
+    this.returnOnInvestment = event.value;
+    this.calculateOutput();
+  }
+
   onInflationInputChange(event): void {
+    this.calculateOutput();
+  }
+
+  onInflationSliderChange(event): void {
+    this.inflation = event.value;
     this.calculateOutput();
   }
 
   calculateOutput(): void {
     this.moneyToRetire = this.expenses * 25;
-    this.moneyToRetireFormatted = '$' + this.formatMoney(this.moneyToRetire);
     this.yearsToRetirement = 
       this.nper(
         (this.returnOnInvestment - this.inflation) / 100.0 /* rate */,
-        -1 * this.retirementContributions /* paymentAmount */,
-        -1 * this.currentRetirementSavings /* presentValue */,
+        -1 * this.contributions /* paymentAmount */,
+        -1 * (this.savings - this.cost) /* presentValue, without the $$ you are hypothetically spending */,
         this.moneyToRetire /* futureValue */
       );
     this.yearsToRetirementFormatted = this.yearsToRetirement.toFixed(2);
     if (this.yearsToRetirementFormatted === 'NaN') {
       this.yearsToRetirementFormatted = 'You will never retire!!!';
     }
+    this.ageAtRetirement = this.age + this.yearsToRetirement;
+    console.log(this.yearsToRetirement);
+    console.log(this.calculateRetirementAgeWithoutCost());
+    this.retirementDiffDays = (this.yearsToRetirement - this.calculateRetirementAgeWithoutCost()) * 365;
+  }
+
+  calculateRetirementAgeWithoutCost(): number {
+    return this.nper(
+      (this.returnOnInvestment - this.inflation) / 100.0 /* rate */,
+      -1 * this.contributions /* paymentAmount */,
+      -1 * this.savings /* presentValue */,
+      this.moneyToRetire /* futureValue */
+    );
   }
 
   nper(rate: number, paymentAmount: number, presentValue: number, futureValue: number) {
