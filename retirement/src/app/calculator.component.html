@@ -17,7 +17,7 @@
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange($event)"
+          (input)="onSliderChange()"
           [min]="costMin"
           [max]="costMax"
           [step]="costStep"
@@ -37,7 +37,7 @@
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange($event)"
+          (input)="onSliderChange()"
           [min]="ageMin"
           [max]="ageMax"
           [step]="ageStep"
@@ -57,7 +57,7 @@
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange($event)"
+          (input)="onSliderChange()"
           [min]="savingsMin"
           [max]="savingsMax"
           [step]="savingsStep"
@@ -78,7 +78,7 @@
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange($event)"
+          (input)="onSliderChange()"
           [min]="expensesMin"
           [max]="expensesMax"
           [step]="expensesStep"
@@ -98,7 +98,7 @@
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange($event)"
+          (input)="onSliderChange()"
           [min]="contributionsMin"
           [max]="contributionsMax"
           [step]="contributionsStep"
@@ -125,7 +125,7 @@
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange($event)"
+          (input)="onSliderChange()"
           [min]="returnOnInvestmentMin"
           [max]="returnOnInvestmentMax"
           [step]="returnOnInvestmentStep"
@@ -145,7 +145,7 @@
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange($event)"
+          (input)="onSliderChange()"
           thumbLabel
           [min]="inflationMin"
           [max]="inflationMax"
@@ -190,7 +190,7 @@
           completely off interest from your investments in retirement. You may still be able to retire
           by rationing your savings over your remaining life expectancy.
           <!-- TODO: Make this happen. -->
-           <!-- We'll calculate these values for you, but realize this is not the kind of -->
+          <!-- We'll calculate these values for you, but realize this is not the kind of -->
           <!-- retirement this calculator is set up for. -->
         </div>
       </div>

@@ -51,8 +51,7 @@ export class CalculatorComponent implements OnInit {
   costMax: number = CalculatorComponent.COST_MAX;
   costStep: number = 100;
 
-  returnOnInvestment: number = 3
-  ;
+  returnOnInvestment: number = 7;
   returnOnInvestmentMin: number = CalculatorComponent.RETURN_ON_INVESTMENT_MIN;
   returnOnInvestmentMax: number = CalculatorComponent.RETURN_ON_INVESTMENT_MAX;
   returnOnInvestmentStep: number = 1;
