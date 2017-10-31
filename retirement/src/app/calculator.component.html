@@ -5,15 +5,15 @@
       <span matPrefix>$</span>
       <input
           placeholder="Retirement Savings (Today)"
-          (input)="onSavingsInputChange($event)"
+          (input)="adjustSliderBounds('savings')"
           matInput
+          type="number"
           [(ngModel)]="savings"
       >
     </mat-form-field>
     <mat-slider
         class="slider"
-        (input)="onSavingsSliderChange($event)"
-        thumbLabel
+        (input)="onSliderChange($event)"
         [min]="savingsMin"
         [max]="savingsMax"
         [step]="savingsStep"
@@ -25,15 +25,15 @@
       <span matPrefix>$</span>
       <input
           placeholder="Retirement Contributions (Annual)"
-          (input)="onContributionsInputChange($event)"
+          (input)="adjustSliderBounds('contributions')"
           matInput
+          type="number"
           [(ngModel)]="contributions"
       >
     </mat-form-field>
     <mat-slider
         class="slider"
-        (input)="onContributionsSliderChange($event)"
-        thumbLabel
+        (input)="onSliderChange($event)"
         [min]="contributionsMin"
         [max]="contributionsMax"
         [step]="contributionsStep"
@@ -45,15 +45,15 @@
       <span matPrefix>$</span>
       <input
           placeholder="Expenses (Annual)"
-          (input)="onExpensesInputChange($event)"
+          (input)="adjustSliderBounds('expenses')"
           matInput
+          type="number"
           [(ngModel)]="expenses"
       >
     </mat-form-field>
     <mat-slider
         class="slider"
-        (input)="onExpensesSliderChange($event)"
-        thumbLabel
+        (input)="onSliderChange($event)"
         [min]="expensesMin"
         [max]="expensesMax"
         [step]="expensesStep"
@@ -64,14 +64,15 @@
     <mat-form-field class="inputFormField" floatPlaceholder="always">
       <input
           placeholder="Age (Today)"
-          (input)="onAgeInputChange($event)"
+          (input)="adjustSliderBounds('age')"
           matInput
+          type="number"
           [(ngModel)]="age"
       >
     </mat-form-field>
     <mat-slider
         class="slider"
-        (input)="onAgeSliderChange($event)"
+        (input)="onSliderChange($event)"
         thumbLabel
         [min]="ageMin"
         [max]="ageMax"
@@ -84,15 +85,15 @@
       <span matPrefix>$</span>
       <input
           placeholder="Cost of thing you want to buy today"
-          (input)="onCostInputChange($event)"
+          (input)="adjustSliderBounds('cost')"
           matInput
+          type="number"
           [(ngModel)]="cost"
       >
     </mat-form-field>
     <mat-slider
         class="slider"
-        (input)="onCostSliderChange($event)"
-        thumbLabel
+        (input)="onSliderChange($event)"
         [min]="costMin"
         [max]="costMax"
         [step]="costStep"
@@ -107,15 +108,16 @@
     <mat-form-field class="inputFormField" floatPlaceholder="always">
       <input
           placeholder="Return on Investment (Annual)"
-          (input)="onReturnOnInvestmentInputChange($event)"
+          (input)="adjustSliderBounds('returnOnInvestment')"
           matInput
+          type="number"
           [(ngModel)]="returnOnInvestment"
       >
       <span matSuffix>%</span>
     </mat-form-field>
     <mat-slider
         class="slider"
-        (input)="onReturnOnInvestmentSliderChange($event)"
+        (input)="onSliderChange($event)"
         thumbLabel
         [min]="returnOnInvestmentMin"
         [max]="returnOnInvestmentMax"
@@ -127,15 +129,16 @@
     <mat-form-field class="inputFormField" floatPlaceholder="always">
       <input
           placeholder="Inflation (Annual)"
-          (input)="onInflationInputChange($event)"
+          (input)="adjustSliderBounds('inflation')"
           matInput
+          type="number"
           [(ngModel)]="inflation"
       >
       <span matSuffix>%</span>
     </mat-form-field>
     <mat-slider
         class="slider"
-        (input)="onInflationSliderChange($event)"
+        (input)="onSliderChange($event)"
         thumbLabel
         [min]="inflationMin"
         [max]="inflationMax"
@@ -167,9 +170,9 @@
       </div>
     </div>
     <div layout="row">
-      <div>Days you're delaying your retirement by spending {{ cost | currency:'USD':true:'1.0-2' }} today:</div>
+      <div>By spending {{ cost | currency:'USD':true:'1.0-2' }} today, you're delaying your retirement by:</div>
       <div>
-        <strong>{{ retirementDiffDays | number: '1.0-3' }}</strong>
+        <strong>{{ retirementDiffString }}</strong>
       </div>
     </div>
   </mat-card-content>

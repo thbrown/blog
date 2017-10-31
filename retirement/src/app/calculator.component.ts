@@ -11,46 +11,61 @@ import 'rxjs/add/operator/map';
 })
 export class CalculatorComponent implements OnInit {
 
+  static readonly SAVINGS_MIN: number = 0;
+  static readonly SAVINGS_MAX: number = 1000000;
+  static readonly CONTRIBUTIONS_MIN = 0;
+  static readonly CONTRIBUTIONS_MAX = 100000;
+  static readonly EXPENSES_MIN = 0;
+  static readonly EXPENSES_MAX = 100000;
+  static readonly AGE_MIN = 15;
+  static readonly AGE_MAX = 125;
+  static readonly COST_MIN = 0;
+  static readonly COST_MAX = 100000;
+  static readonly RETURN_ON_INVESTMENT_MIN = 0;
+  static readonly RETURN_ON_INVESTMENT_MAX = 15;
+  static readonly INFLATION_MIN = 0;
+  static readonly INFLATION_MAX = 15;
+
   savings: number = 50000;
-  savingsMin: number = 0;
-  savingsMax: number = 1000000;
+  savingsMin: number = CalculatorComponent.SAVINGS_MIN;
+  savingsMax: number = CalculatorComponent.SAVINGS_MAX;
   savingsStep: number = 1000;
 
   contributions: number = 20000;
-  contributionsMin: number = 0;
-  contributionsMax: number = 100000;
+  contributionsMin: number = CalculatorComponent.CONTRIBUTIONS_MIN;
+  contributionsMax: number = CalculatorComponent.CONTRIBUTIONS_MAX;
   contributionsStep: number = 1000;
 
   expenses: number = 35000;
-  expensesMin: number = 0;
-  expensesMax: number = 100000;
+  expensesMin: number = CalculatorComponent.EXPENSES_MIN;
+  expensesMax: number = CalculatorComponent.EXPENSES_MAX;
   expensesStep: number = 1000;
 
   age: number = 25;
-  ageMin: number = 0;
-  ageMax: number = 125;
+  ageMin: number = CalculatorComponent.AGE_MIN;
+  ageMax: number = CalculatorComponent.AGE_MAX;
   ageStep: number = 1;
 
   cost: number = 1000;
-  costMin: number = 0;
-  costMax: number = 100000;
+  costMin: number = CalculatorComponent.COST_MIN;
+  costMax: number = CalculatorComponent.COST_MAX;
   costStep: number = 100;
 
   returnOnInvestment: number = 7;
-  returnOnInvestmentMin: number = 0;
-  returnOnInvestmentMax: number = 15;
+  returnOnInvestmentMin: number = CalculatorComponent.RETURN_ON_INVESTMENT_MIN;
+  returnOnInvestmentMax: number = CalculatorComponent.RETURN_ON_INVESTMENT_MAX;
   returnOnInvestmentStep: number = 1;
 
   inflation: number = 3;
-  inflationMin: number = 0;
-  inflationMax: number = 15;
+  inflationMin: number = CalculatorComponent.INFLATION_MIN;
+  inflationMax: number = CalculatorComponent.INFLATION_MAX;
   inflationStep: number = 1;
 
   moneyToRetire: number;
   yearsToRetirement: number;
   yearsToRetirementFormatted: string;
   ageAtRetirement: number;
-  retirementDiffDays: number;
+  retirementDiffString: string;
 
   constructor(private route: ActivatedRoute) {
     this.calculateOutput();
@@ -66,72 +81,20 @@ export class CalculatorComponent implements OnInit {
     console.log('after')
   }
 
-  onSavingsInputChange(event): void {
-    this.calculateOutput();
-  }
-
-  onSavingsSliderChange(event): void {
-    this.savings = event.value;
-    this.calculateOutput();
-  }
-
-  onContributionsInputChange(event): void {
-    this.calculateOutput();
-  }
-
-  onContributionsSliderChange(event): void {
-    this.contributions = event.value;
-    this.calculateOutput();
-  }
-
-  onExpensesInputChange(event): void {
-    this.calculateOutput();
-  }
-
-  onExpensesSliderChange(event): void {
-    this.expenses = event.value;
-    this.calculateOutput();
-  }
-
-  onAgeInputChange(event): void {
-    this.calculateOutput();
-  }
-
-  onAgeSliderChange(event): void {
-    this.age = event.value;
-    this.calculateOutput();
-  }
-
-  onCostInputChange(event): void {
-    this.calculateOutput();
-  }
-
-  onCostSliderChange(event): void {
-    this.cost = event.value;
-    this.calculateOutput();
-  }
-
-  onReturnOnInvestmentInputChange(event): void {
-    if (this.returnOnInvestment < this.returnOnInvestmentMin) {
-      this.returnOnInvestment = this.returnOnInvestmentMin;
+  adjustSliderBounds(variableName: string): void {
+    const variableNameMin = variableName + 'Min';
+    const variableNameMax = variableName + 'Max';
+    
+    if (this[variableName] < this[variableNameMin]) {
+      this[variableNameMin] = this[variableName];
     }
-    if (this.returnOnInvestment > this.returnOnInvestmentMax) {
-      this.returnOnInvestment = this.returnOnInvestmentMax;
+    if (this[variableName] > this[variableNameMax]) {
+      this[variableNameMax] = this[variableName];
     }
     this.calculateOutput();
   }
 
-  onReturnOnInvestmentSliderChange(event): void {
-    this.returnOnInvestment = event.value;
-    this.calculateOutput();
-  }
-
-  onInflationInputChange(event): void {
-    this.calculateOutput();
-  }
-
-  onInflationSliderChange(event): void {
-    this.inflation = event.value;
+  onSliderChange(): void {
     this.calculateOutput();
   }
 
@@ -150,10 +113,11 @@ export class CalculatorComponent implements OnInit {
       this.yearsToRetirementFormatted = 'You will never retire!!!';
     }
     this.ageAtRetirement = this.age + this.yearsToRetirement;
-    this.retirementDiffDays = (this.yearsToRetirement - this.calculateRetirementAgeWithoutCost(netRate)) * 365;
+    this.retirementDiffString = this.secondsToFormattedTimeString(
+      (this.yearsToRetirement - this.calculateYearsToRetirementWithoutCost(netRate)) * 31536000);
   }
 
-  calculateRetirementAgeWithoutCost(netRate: number): number {
+  calculateYearsToRetirementWithoutCost(netRate: number): number {
     return this.nper(
       netRate /* rate */,
       -1 * this.contributions /* paymentAmount */,
@@ -171,12 +135,26 @@ export class CalculatorComponent implements OnInit {
     }
 
     const endOrBeginning: number = 0;
-    let numerator: number = paymentAmount * (1 + rate * endOrBeginning) - futureValue * rate;
-    let denominator = (presentValue * rate + paymentAmount * (1 + rate * endOrBeginning));
+    const numerator: number = paymentAmount * (1 + rate * endOrBeginning) - futureValue * rate;
+    const denominator = (presentValue * rate + paymentAmount * (1 + rate * endOrBeginning));
     return Math.log(numerator / denominator) / Math.log(1 + rate);
   }
 
   formatMoney(n): string {
     return n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+  }
+
+  secondsToFormattedTimeString(seconds: number): string{
+    const numYears = Math.floor(seconds / 31536000);
+    const numDays = Math.floor((seconds % 31536000) / 86400); 
+    const numHours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+    const numMinutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+    const numSeconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+    
+    return (numYears == 0 ? "" : numYears + " years ") +
+        (numDays == 0 ? "" : numDays + " days ") +
+        (numHours == 0 ? "" : numHours + " hours ") +
+        (numMinutes == 0 ? "" : numMinutes + " minutes ") +
+        (numSeconds == 0 ? "" : numSeconds.toFixed(0) + " seconds");
   }
 }
