@@ -18,7 +18,7 @@ export class CalculatorComponent implements OnInit {
   static readonly EXPENSES_MIN: number = 0;
   static readonly EXPENSES_MAX: number = 100000;
   static readonly AGE_MIN: number = 15;
-  static readonly AGE_MAX: number = 125;
+  static readonly AGE_MAX: number = 70;
   static readonly COST_MIN: number = 0;
   static readonly COST_MAX: number = 10000;
   static readonly RETURN_ON_INVESTMENT_MIN: number = 0;
@@ -29,7 +29,7 @@ export class CalculatorComponent implements OnInit {
   savings: number = 5000;
   savingsMin: number = CalculatorComponent.SAVINGS_MIN;
   savingsMax: number = CalculatorComponent.SAVINGS_MAX;
-  savingsStep: number = 1000;
+  savingsStep: number = 5000;
 
   contributions: number = 18000;
   contributionsMin: number = CalculatorComponent.CONTRIBUTIONS_MIN;
@@ -95,7 +95,8 @@ export class CalculatorComponent implements OnInit {
     this.calculateOutput();
   }
 
-  onSliderChange(): void {
+  onSliderChange($event, variableName: string): void {
+    this[variableName] = $event.value;
     this.calculateOutput();
   }
 

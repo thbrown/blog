@@ -12,12 +12,13 @@
             (input)="adjustSliderBounds('cost')"
             matInput
             type="number"
+            [step]="costStep"
             [(ngModel)]="cost"
         >
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange()"
+          (input)="onSliderChange($event, 'cost')"
           [min]="costMin"
           [max]="costMax"
           [step]="costStep"
@@ -32,12 +33,13 @@
             (input)="adjustSliderBounds('age')"
             matInput
             type="number"
+            [step]="ageStep"
             [(ngModel)]="age"
         >
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange()"
+          (input)="onSliderChange($event, 'age')"
           [min]="ageMin"
           [max]="ageMax"
           [step]="ageStep"
@@ -52,12 +54,13 @@
             (input)="adjustSliderBounds('savings')"
             matInput
             type="number"
+            [step]="savingsStep"
             [(ngModel)]="savings"
         >
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange()"
+          (input)="onSliderChange($event, 'savings')"
           [min]="savingsMin"
           [max]="savingsMax"
           [step]="savingsStep"
@@ -73,12 +76,13 @@
             (input)="adjustSliderBounds('expenses')"
             matInput
             type="number"
+            [step]="expensesStep"
             [(ngModel)]="expenses"
         >
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange()"
+          (input)="onSliderChange($event, 'expenses')"
           [min]="expensesMin"
           [max]="expensesMax"
           [step]="expensesStep"
@@ -93,12 +97,13 @@
             (input)="adjustSliderBounds('contributions')"
             matInput
             type="number"
+            [step]="contributionsStep"
             [(ngModel)]="contributions"
         >
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange()"
+          (input)="onSliderChange($event, 'contributions')"
           [min]="contributionsMin"
           [max]="contributionsMax"
           [step]="contributionsStep"
@@ -119,13 +124,14 @@
             (input)="adjustSliderBounds('returnOnInvestment')"
             matInput
             type="number"
+            [step]="returnOnInvestmentStep"
             [(ngModel)]="returnOnInvestment"
         >
         <span matSuffix>%</span>
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange()"
+          (input)="onSliderChange($event, 'returnOnInvestment')"
           [min]="returnOnInvestmentMin"
           [max]="returnOnInvestmentMax"
           [step]="returnOnInvestmentStep"
@@ -139,13 +145,14 @@
             (input)="adjustSliderBounds('inflation')"
             matInput
             type="number"
+            [step]="inflationStep"
             [(ngModel)]="inflation"
         >
         <span matSuffix>%</span>
       </mat-form-field>
       <mat-slider
           class="slider"
-          (input)="onSliderChange()"
+          (input)="onSliderChange($event, 'inflation')"
           thumbLabel
           [min]="inflationMin"
           [max]="inflationMax"
