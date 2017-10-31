@@ -1,8 +1,49 @@
+.accordian .mat-expansion-panel-header-title,
+.accordian .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.accordian .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
 .slider {
   width: 300px;
+}
+
+.output-row {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between */
+}
+
+.output-label {
+  margin-right: 20px;
+  width: 200px;
+}
+
+.retirement-delay {
+  margin-top: 20px;
 }
 
 .inputFormField { 
   width: 200px;
   margin-right: 40px;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.warning-icon {
+  margin-right: 20px;
+}
+
+.warning {
+  align-items: center;
+  color: #F44336;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }

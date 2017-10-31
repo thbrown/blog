@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { CalculatorComponent } from './calculator.component';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatInputModule, MatSliderModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatCheckboxModule, MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatSliderModule, MatToolbarModule } from '@angular/material';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,8 +27,10 @@ const routes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
+    MatExpansionModule,
     MatFormFieldModule,
     MatGridListModule,
+    MatIconModule,
     MatInputModule,
     MatSliderModule,
     MatToolbarModule,
