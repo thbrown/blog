@@ -4,19 +4,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { CalculatorComponent } from './calculator.component';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatInputModule, MatSliderModule, MatToolbarModule } from '@angular/material';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'calculator', pathMatch: 'full' },
-  { path: 'calculator/:savings', component: AppComponent},
+  // { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'calculator', component: CalculatorComponent },
+  { path: 'calculator/:savings', component: CalculatorComponent},
 ]
-
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,
