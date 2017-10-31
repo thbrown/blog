@@ -116,7 +116,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   formatYears(years: number): string {
-    return (isNaN(years) || !isFinite(years) || this.isNetRateInvalid()) ? 'You will never retire!!!' : this.yearsToRetirement.toFixed(2);
+    return (isNaN(years) || !isFinite(years) || !this.isNetRateValid()) ? 'You will never retire!!!' : this.yearsToRetirement.toFixed(2);
   }
 
   calculateYearsToRetirementWithoutCost(netRate: number): number {
@@ -146,7 +146,7 @@ export class CalculatorComponent implements OnInit {
     return n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
   }
 
-  isNetRateInvalid(): boolean {
+  isNetRateValid(): boolean {
     return this.netRate != 0;
   }
 

@@ -183,16 +183,16 @@
         <strong>{{ retirementDiffString }}</strong>
       </div>
     </div>
-    <div class="warning" [hidden]="isNetRateInvalid()">
-        <mat-icon class="warning-icon">warning</mat-icon>
-        <div>
-          With your chosen assumptions, you'll never be able to acquire enough wealth to live
-          completely off interest from your investments in retirement. You may still be able to retire
-          by rationing your savings over your remaining life expectancy.
-          <!-- TODO: Make this happen. -->
-          <!-- We'll calculate these values for you, but realize this is not the kind of -->
-          <!-- retirement this calculator is set up for. -->
-        </div>
+    <div class="warning" [hidden]="isNetRateValid()">
+      <mat-icon class="warning-icon">warning</mat-icon>
+      <div>
+        With your chosen assumptions, you'll never be able to acquire enough wealth to live
+        completely off interest from your investments in retirement. You may still be able to retire
+        by rationing your savings over your remaining life expectancy.
+        <!-- TODO: Make this happen. -->
+        <!-- We'll calculate these values for you, but realize this is not the kind of -->
+        <!-- retirement this calculator is set up for. -->
       </div>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
