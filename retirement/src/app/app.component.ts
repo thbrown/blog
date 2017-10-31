@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 import { MatSliderChange } from '@angular/material/slider'
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   savings: number = 50000;
   savingsMin: number = 0;
@@ -49,15 +52,25 @@ export class AppComponent {
   ageAtRetirement: number;
   retirementDiffDays: number;
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
     this.calculateOutput();
-   }
+  }
 
-   onSavingsInputChange(event): void {
-     this.calculateOutput();
-   }
+  ngOnInit() {
+    // This doesn't work.
+    console.log('before')
+    const savings =  this.route.paramMap.map((params: ParamMap) => {
+      return params.get('savings');
+    });
+    console.log(savings)
+    console.log('after')
+  }
 
-   onSavingsSliderChange(event): void {
+  onSavingsInputChange(event): void {
+    this.calculateOutput();
+  }
+
+  onSavingsSliderChange(event): void {
     this.savings = event.value;
     this.calculateOutput();
   }
