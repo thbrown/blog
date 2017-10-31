@@ -47,7 +47,3 @@
   justify-content: space-between;
   margin-top: 20px;
 }
-
-div[hidden] {
-  display: none;
-}

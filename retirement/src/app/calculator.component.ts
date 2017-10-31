@@ -20,7 +20,7 @@ export class CalculatorComponent implements OnInit {
   static readonly AGE_MIN: number = 15;
   static readonly AGE_MAX: number = 125;
   static readonly COST_MIN: number = 0;
-  static readonly COST_MAX: number = 100000;
+  static readonly COST_MAX: number = 10000;
   static readonly RETURN_ON_INVESTMENT_MIN: number = 0;
   static readonly RETURN_ON_INVESTMENT_MAX: number = 15;
   static readonly INFLATION_MIN: number = 0;
@@ -147,7 +147,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   isNetRateValid(): boolean {
-    return this.netRate != 0;
+    return this.netRate > 0;
   }
 
   secondsToFormattedTimeString(seconds: number): string{

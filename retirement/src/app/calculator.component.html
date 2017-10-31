@@ -183,7 +183,7 @@
         <strong>{{ retirementDiffString }}</strong>
       </div>
     </div>
-    <div class="warning" [hidden]="isNetRateValid()">
+    <div class="warning" *ngIf="!isNetRateValid()">
       <mat-icon class="warning-icon">warning</mat-icon>
       <div>
         With your chosen assumptions, you'll never be able to acquire enough wealth to live
