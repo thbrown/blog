@@ -1,0 +1,21 @@
+.share-buttons {
+  margin-top: 200px;
+  text-align: center;
+}
+
+.share-buttons > a {
+  text-decoration: none;
+}
+
+.share-buttons img {
+  background-color: white;
+  border: 0;
+  box-shadow: none;
+  display: inline-block;
+  padding: 5px;
+  width: 35px;
+}
+
+.share-buttons img:hover {
+  opacity: 0.5;
+}
