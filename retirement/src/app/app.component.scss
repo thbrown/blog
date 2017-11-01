@@ -28,6 +28,16 @@ $background-color: #e0e0e0;
   margin: 20px;
 }
 
+.no-bottom-margin {
+  margin-bottom: 0px;
+}
+
+.floated-image {
+  float: left;
+  margin-right: 20px;
+  padding-bottom: 20px;
+}
+
 h1, h2, h3, h4, .table {
   font-family: Roboto, "Helvetica Neue",sans-serif;
 }
