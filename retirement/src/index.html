@@ -1,25 +1,38 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Retirement</title>
-  <base href="/">
+< doctype html>
+  <html lang="en">
+    <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109053772-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<script>
-  // See http://www.backalleycoder.com/2016/05/13/sghpa-the-single-page-app-hack-for-github-pages/
-  (function(){
-    var redirect = sessionStorage.redirect;
-    delete sessionStorage.redirect;
-    if (redirect && redirect != location.href) {
-      history.replaceState(null, null, redirect);
-    }
-  })();
-</script>
-<body>
-  <app-root></app-root>
-</body>
-</html>
+        gtag('config', 'UA-109053772-1');
+      </script>
+      <meta charset="utf-8">
+      <title>Retirement</title>
+      <base href="/">
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" type="image/x-icon" href="favicon.ico">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- load custom font -->
+      <link
+          href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+          rel="stylesheet"
+          type="text/css"
+      >
+      <!-- load MUI -->
+      <link href="//cdn.muicss.com/mui-0.9.28/css/mui.min.css" rel="stylesheet" type="text/css">
+      <script src="//cdn.muicss.com/mui-0.9.28/js/mui.min.js"></script>
+    </head>
+    <script>
+      // See
+      http://www.backalleycoder.com/2016/05/13/sghpa-the-single-page-app-hack-for-github-pages/
+      (function(){ var redirect = sessionStorage.redirect; delete sessionStorage.redirect; if
+      (redirect && redirect != location.href) { history.replaceState(null, null, redirect); } })();
+    </script>
+    <body>
+      <app-root></app-root>
+    </body>
+  </html>
