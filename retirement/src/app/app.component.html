@@ -3,11 +3,19 @@
 <div class="background">
   <div class="mui-container main-container">
 
-    <h2>How much is buying this thing going to delay my retirement?</h2>
+    <h2 class="mui--text-center">
+      <strong>How much is buying this thing going to delay my retirement?</strong>
+    </h2>
 
-    <h3>AKA How many Hot ‘n Spicy McChickens is this gonna cost me?*</h3>
+    <h3>The Old Way: How many Hot ‘n Spicy McChickens* is this gonna cost me?</h3>
 
     <div class="text">
+      <img
+          class="floated-image"
+          height="175"
+          src="http://2.bp.blogspot.com/-W-hP0RM7koc/T3kYuJM5JyI/AAAAAAAAT94/cBnLRe_tsVE/s640/IMG_6127.JPG"
+          width="262"
+      >
       Whenever I see something shiny and fun that I want to buy, I try to figure out a way to make
       the cost more tangible so I can determine whether or not it’s worth it. In high school and
       college I used to think of the opportunity cost in terms of the other things I would likely
@@ -19,7 +27,7 @@
     <div class="text">
       After I graduated and got a real job that paid me more money than I was comfortable with
       spending, I started investing any money that I didn’t spend each month. I’ve been able to
-      start putting money toward my retirement accounts as well as some make some investments into
+      start putting money toward my retirement accounts as well as make some investments into
       taxable accounts for shorter term goals.
     </div>
 
@@ -47,7 +55,7 @@
       earlier can I retire?
     </div>
 
-    <h3>The Numbers</h3>
+    <h3>The New Way: Middle School Math</h3>
 
     <div class="text">
       <a
@@ -97,16 +105,16 @@
       accrue interest/dividends/capital gains fast enough that this account will replenish itself
       indefinitely. In other words, the value of the account,
       <strong>on average</strong>
-      *, will never decrease over time.
+      **, will never decrease over time.
     </div>
 
-    <div class="text">
+    <div class="text no-bottom-margin">
       In case you’d like to see how expected return on investments affects the calculations, feel
       free to adjust the sliders in the assumptions accordion. Here are some common investment
       options:
     </div>
 
-    <table class="table table-centered">
+    <table class="table table-centered offset-text-margin">
       <thead>
         <tr class="mat-header-row">
           <td class="mat-header-cell">Investment</td>
@@ -165,50 +173,47 @@
     </table>
 
     <div class="text">
-      You might notice that long-term, government bonds barely keep up with inflation. And keeping your
-      money in a savings account generally means that you are effectively losing money to inflation
-      (even though the dollar amount continues to rise, things become more expensive so you can
-      actually buy less)... so you’ll never retire. When you consider investing in the stock market
-      as a whole (index funds, ETFs), over long time horizons, it’s a lot less risky than it might
-      seem.
+      You might notice that long-term, government bonds barely keep up with inflation. And keeping
+      your money in a savings account generally means that you are effectively losing money to
+      inflation (even though the dollar amount continues to rise, things become more expensive so
+      you can actually buy less)... so you’ll never retire. When you consider investing in the stock
+      market as a whole (index funds, ETFs), over long time horizons, it’s a lot less risky than it
+      might seem.
     </div>
-
   </div>
-    <div class="mui-container calculator">
-
-      <h2>The Retirement Calculator</h2>
-      <div class="text">Curious how your situation stacks up? Use the handy dandy calculator!</div>
-      <calculator></calculator>
-    </div>
+  <div class="mui-container calculator" id="calculator">
+    <h2>The Retirement Calculator</h2>
+    <div class="text">Curious how your situation stacks up? Use the handy dandy calculator!</div>
+    <calculator></calculator>
+  </div>
 
   <div class="mui-container footnotes">
-      
-              <div class="text">
-                * Late one night in New Hampshire I just got off of a flight from Denver and was starving. I
-                busted into the closest McDonald's I could find and boldly declared "Two Hot 'n Spicys,
-                please!". The very Bostonian man behind the counter looked up at me with a perplexed look and
-                said "Two what?". "Hot n Spicys?" I said, much less confidently. I looked up at the menu and
-                to my horror, in the place of the Hot n' Spicy on the Dollar Menu was just the word
-                "McChicken". "Ummm... two McChickens". So I at the two bland chicken sandwiches.. meh. I
-                learned later that the Hot n’ Spicy McChicken is a regional delicacy those who don't live in
-                certain parts of the south and southwestern United States will have to travel to appreciate.
-                Here is what you're missing out on:
-              </div>
-              <img
-              height="213"
-              src="http://2.bp.blogspot.com/-W-hP0RM7koc/T3kYuJM5JyI/AAAAAAAAT94/cBnLRe_tsVE/s640/IMG_6127.JPG"
-              width="320"
-              >
-              
-              <div class="text">
-                ** Over a long period of time. The stock market obviously has some ups and downs. This method
-                assumes that in tough times, you are willing to spend a little less than 4%, or even work
-                part-time, to make up any difference if necessary.
-              </div>
-              <div class="text">
-                *** Based on past performance. Past performance does not guarantee future performance.
-              </div>
-            </div>
+    <div class="text">
+      * Late one night in New Hampshire I just got off of a flight from Denver and was starving. I
+      busted into the closest McDonald's I could find and boldly declared "Two Hot 'n Spicys,
+      please!". The very Bostonian man behind the counter looked up at me with a perplexed look and
+      said "Two what?". "Hot n Spicys?" I said, much less confidently. I looked up at the menu and
+      to my horror, in the place of the Hot n' Spicy on the Dollar Menu was just the word
+      "McChicken". "Ummm... two McChickens". So I at the two bland chicken sandwiches.. meh. I
+      learned later that the Hot n’ Spicy McChicken is a regional delicacy those who don't live in
+      certain parts of the south and southwestern United States will have to travel to appreciate.
+      <a
+          href="http://animmovablefeast.blogspot.com/2012/04/fast-food-review-mcdonalds-hot-n-spicy.html"
+      >
+        This
+      </a>
+      is what you're missing out on.
+    </div>
+
+    <div class="text">
+      ** Over a long period of time. The stock market obviously has some ups and downs. This method
+      assumes that in tough times, you are willing to spend a little less than 4%, or even work
+      part-time, to make up any difference if necessary.
+    </div>
+    <div class="text">
+      *** Based on past performance. Past performance does not guarantee future performance.
+    </div>
+  </div>
 
   <div class="mui-panel share-buttons">
 
