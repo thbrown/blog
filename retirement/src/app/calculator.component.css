@@ -1,9 +1,14 @@
-.accordian .mat-expansion-panel-header-title,
-.accordian .mat-expansion-panel-header-description {
+.accordion .mat-expansion-panel-header-title,
+.accordion .mat-expansion-panel-header-description {
   flex-basis: 0;
 }
 
-.accordian .mat-expansion-panel-header-description {
+.accordion .mat-expansion-panel-header-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.accordion .mat-expansion-panel-header-description {
   justify-content: space-between;
   align-items: center;
 }
@@ -28,8 +33,9 @@
 }
 
 .inputFormField { 
-  width: 200px;
+  font-size: 16px;
   margin-right: 40px;
+  width: 250px;
 }
 
 .invisible {

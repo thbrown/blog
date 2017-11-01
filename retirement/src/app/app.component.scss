@@ -1,0 +1,94 @@
+$indigo: #3F51B5;
+$background-color: #e0e0e0;
+
+.mat-toolbar {
+  color: white;
+  background-color: $indigo;
+}
+
+.spacer {
+  background-color: $background-color;
+  height: 20px;
+}
+
+.background {
+  background-color: $background-color;
+}
+
+.background .mui-container {
+  background-color: white;
+}
+
+.main-container {
+  padding-bottom: 15px;
+}
+
+.text {
+  font: 400 14px/20px Roboto,"Helvetica Neue",sans-serif;
+  margin: 20px;
+}
+
+h1, h2, h3, h4, .table {
+  font-family: Roboto, "Helvetica Neue",sans-serif;
+}
+
+.footnotes, .calculator {
+  margin-top: 20px;
+  padding-bottom: 15px;
+}
+
+// Share Buttons
+
+.share-buttons {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.share-buttons > a {
+  text-decoration: none;
+}
+
+.share-buttons img {
+  background-color: white;
+  border: 0;
+  box-shadow: none;
+  display: inline-block;
+  padding: 5px;
+  width: 35px;
+}
+
+.share-buttons img:hover {
+  opacity: 0.5;
+}
+
+// Material Table
+
+$mat-row-height: 48px;
+$mat-row-horizontal-padding: 24px;
+
+table .table {
+  border: black;
+  display: block;
+  font-size: 14px;
+}
+
+.table-centered {
+  margin: auto;
+}
+
+.mat-row, .mat-header-row {
+  display: flex;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  align-items: center;
+  min-height: $mat-row-height;
+  padding: 0 $mat-row-horizontal-padding;
+}
+
+.mat-cell, .mat-header-cell {
+  flex: 1;
+  overflow: hidden;
+  min-width: 100px;
+  word-wrap: break-word;
+}
