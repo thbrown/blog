@@ -26,17 +26,17 @@ export class CalculatorComponent implements OnInit {
   static readonly INFLATION_MIN: number = 0;
   static readonly INFLATION_MAX: number = 15;
 
-  savings: number = 5000;
+  savings: number = 45000;
   savingsMin: number = CalculatorComponent.SAVINGS_MIN;
   savingsMax: number = CalculatorComponent.SAVINGS_MAX;
   savingsStep: number = 5000;
 
-  contributions: number = 18000;
+  contributions: number = 6500;
   contributionsMin: number = CalculatorComponent.CONTRIBUTIONS_MIN;
   contributionsMax: number = CalculatorComponent.CONTRIBUTIONS_MAX;
   contributionsStep: number = 1000;
 
-  expenses: number = 75000;
+  expenses: number = 55978;
   expensesMin: number = CalculatorComponent.EXPENSES_MIN;
   expensesMax: number = CalculatorComponent.EXPENSES_MAX;
   expensesStep: number = 1000;
@@ -46,7 +46,7 @@ export class CalculatorComponent implements OnInit {
   ageMax: number = CalculatorComponent.AGE_MAX;
   ageStep: number = 1;
 
-  cost: number = 1000;
+  cost: number = 33560;
   costMin: number = CalculatorComponent.COST_MIN;
   costMax: number = CalculatorComponent.COST_MAX;
   costStep: number = 100;

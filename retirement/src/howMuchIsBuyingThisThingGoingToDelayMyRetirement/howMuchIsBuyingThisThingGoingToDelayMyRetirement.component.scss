@@ -35,11 +35,15 @@ $background-color: #e0e0e0;
 .floated-image {
   float: left;
   margin-right: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 h1, h2, h3, h4, .table {
   font-family: Roboto, "Helvetica Neue",sans-serif;
+}
+
+.flex {
+  display: flex;
 }
 
 .footnotes, .calculator {
