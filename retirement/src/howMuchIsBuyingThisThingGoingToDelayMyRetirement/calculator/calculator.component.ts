@@ -74,12 +74,12 @@ export class CalculatorComponent implements OnInit {
 
   ngOnInit() {
     // This doesn't work.
-    console.log('before')
-    const savings =  this.route.paramMap.map((params: ParamMap) => {
-      return params.get('savings');
-    });
-    console.log(savings)
-    console.log('after')
+    // console.log('before')
+    // const savings =  this.route.paramMap.map((params: ParamMap) => {
+    //   return params.get('savings');
+    // });
+    // console.log(savings)
+    // console.log('after')
   }
 
   adjustSliderBounds(variableName: string): void {
